@@ -1,2 +1,2 @@
-# nrbund
-New Relic execution platform
+# Bund
+BUND programming language
