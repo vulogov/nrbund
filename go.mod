@@ -12,6 +12,7 @@ require (
 	github.com/guptarohit/asciigraph v0.5.3
 	github.com/lrita/cmap v0.0.0-20200818170753-e987cd3dfa73
 	github.com/mgutz/ansi v0.0.0-20200706080929-d51e80ef957d
+	github.com/newrelic/go-agent/v3 v3.15.2
 	github.com/peterh/liner v1.2.2
 	github.com/pieterclaerhout/go-log v1.14.0
 	github.com/tomlazar/table v0.1.1

@@ -22,7 +22,7 @@ var (
 
 func Shell() {
 	Init()
-	banner.PrintBanner(fmt.Sprintf("[ BUND %v ]", conf.EVersion))
+	banner.PrintBanner(fmt.Sprintf("[ NRBUND %v ]", conf.EVersion))
 	log.Info("For exit, type: .exit")
 	log.Debug("[ NRBUND ] bund.Shell() is reached")
 	line := liner.NewLiner()

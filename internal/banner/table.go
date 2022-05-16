@@ -33,6 +33,7 @@ func Table(display bool) {
 		tab := table.Table{
 			Headers: []string{"Description", "Value"},
 			Rows: [][]string{
+				{"Name", *conf.Name},
 				{"Version", conf.EVersion},
 				{"Extended version", conf.BVersion},
 				{"Core version", tc.VERSION},

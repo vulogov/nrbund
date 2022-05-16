@@ -6,7 +6,6 @@ import (
 	"os/signal"
 	"sync"
 	"syscall"
-
 	"github.com/pieterclaerhout/go-log"
 )
 

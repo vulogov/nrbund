@@ -26,4 +26,6 @@ func Init() {
 		conf.Argv = Argv
 	}
 	stdlib.StoreArgs()
+	CheckNewRelic()
+	InitNewRelicAgent()
 }

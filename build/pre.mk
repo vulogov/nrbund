@@ -43,3 +43,5 @@ pre:
 	go get -u golang.org/x/exp/rand
 	go get -u github.com/nakabonne/tstorage
 	go get -u github.com/vulogov/ThreadComputation
+	go get github.com/newrelic/go-agent/v3/newrelic
+	
