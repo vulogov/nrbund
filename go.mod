@@ -16,6 +16,7 @@ require (
 	github.com/peterh/liner v1.2.2
 	github.com/pieterclaerhout/go-log v1.14.0
 	github.com/tomlazar/table v0.1.1
+	github.com/vmihailenco/msgpack v4.0.4+incompatible
 	github.com/vulogov/ThreadComputation v0.0.0-20220406221204-64722ddaf232
 	github.com/zach-klippenstein/goregen v0.0.0-20160303162051-795b5e3961ea
 	go.etcd.io/etcd/client/v3 v3.5.4
