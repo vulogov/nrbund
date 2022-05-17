@@ -2,7 +2,6 @@ package bund
 
 import (
 	"github.com/pieterclaerhout/go-log"
-	"github.com/vulogov/nrbund/internal/signal"
 )
 
 
@@ -10,7 +9,6 @@ import (
 func Agitator() {
 	Init()
 	log.Debug("[ NRBUND ] bund.Agitator() is reached")
-	InitEtcdAgent()
+	InitEtcdAgent("agitator")
 	UpdateConfigToEtcd()
-	signal.ExitRequest()
 }

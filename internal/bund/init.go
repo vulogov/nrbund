@@ -3,7 +3,7 @@ package bund
 import (
 	"github.com/cosiner/argv"
 	"github.com/pieterclaerhout/go-log"
-
+	"github.com/bamzi/jobrunner"
 	"github.com/vulogov/nrbund/internal/conf"
 	"github.com/vulogov/nrbund/internal/stdlib"
 	tlog "github.com/vulogov/nrbund/internal/log"
@@ -27,6 +27,8 @@ func Init() {
 	}
 	log.Debugf("[ NRBUND ] Id: %v", *conf.Id)
 	log.Debugf("[ NRBUND ] Name: %v", *conf.Name)
+	jobrunner.Start()
+	log.Debugf("[ NRBUND ] Job runner started")
 	stdlib.StoreArgs()
 	CheckNewRelic()
 	InitNewRelicAgent()

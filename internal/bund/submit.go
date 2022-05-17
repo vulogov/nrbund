@@ -10,6 +10,6 @@ import (
 func Submit() {
 	Init()
 	log.Debug("[ NRBUND ] bund.Submit() is reached")
-	InitEtcdAgent()
+	InitEtcdAgent("submit")
 	fmt.Println(EtcdGetItems())
 }

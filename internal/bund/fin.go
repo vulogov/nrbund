@@ -9,9 +9,11 @@ import (
 
 func Fin() {
 	banner.Banner("[ Zay Gezunt ]")
-	log.Debug("[ NRBUND ] bund.Fin() is reached")
+	log.Debugf("[ NRBUND ] bund.Fin(%v) is reached", ApplicationId)
+	CloseNatsAgent()
 	CloseEtcdAgent()
 	log.Debug("Wait while NR application is shut down")
 	NRapp.Shutdown(60 * time.Second)
 	log.Debug("NR Application is down")
+	log.Infof("[ NRBUND ] %s is down", ApplicationId)
 }

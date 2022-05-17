@@ -10,6 +10,6 @@ import (
 func Take() {
 	Init()
 	log.Debug("[ NRBUND ] bund.Take() is reached")
-	InitEtcdAgent()
+	InitEtcdAgent("take")
 	fmt.Println(EtcdGetItems())
 }

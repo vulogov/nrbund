@@ -12,8 +12,10 @@ import (
 )
 
 var Etcd *clientv3.Client
+var ApplicationId string
+var ApplicattionType string
 
-func InitEtcdAgent() {
+func InitEtcdAgent(otype string) {
 	var err error
 
 	log.Debugf("Connecting to ETCD: %v", *conf.Etcd)
@@ -35,6 +37,8 @@ func InitEtcdAgent() {
 		signal.ExitRequest()
 		os.Exit(10)
 	}
+	ApplicattionType = otype
+	SetApplicationId(otype)
 }
 
 func EtcdSetItem(key string, value string) {
@@ -63,6 +67,20 @@ func EtcdGetItems()  *map[string]string {
 	return &res
 }
 
+func UpdateLocalConfigFromEtcd() {
+	etcd_cfg := EtcdGetItems()
+	log.Debug("Updating local configuration from ETCD")
+	*conf.Id = (*etcd_cfg)["ID"]
+	SetApplicationId(ApplicattionType)
+	log.Debugf("Application ID is %v", *conf.Id)
+	log.Debugf("NR Account is %v", *conf.NRAccount)
+	*conf.NRKey = (*etcd_cfg)["NEWRELIC_API_KEY"]
+	*conf.NRLicenseKey = (*etcd_cfg)["NEWRELIC_LICENSE_KEY"]
+	*conf.NRIngestKey = (*etcd_cfg)["NEWRELIC_INGEST_KEY"]
+	*conf.Gnats = (*etcd_cfg)["gnats"]
+	log.Debugf("NATS is %v", *conf.Gnats)
+}
+
 func UpdateConfigToEtcd() {
 	if len(*conf.Etcd) > 0 {
 		log.Debugf("Upload NRBUND configuration to ETCD")
@@ -70,7 +88,7 @@ func UpdateConfigToEtcd() {
 		log.Debugf("Update ETCD endpoints with %s", addr)
 		EtcdSetItem("etcd", addr)
 		log.Debugf("Update GNATS endpoints with %s", *conf.Gnats)
-		EtcdSetItem("gnats", addr)
+		EtcdSetItem("gnats", *conf.Gnats)
 		log.Debug("Upload NR keys")
 		EtcdSetItem("NEWRELIC_ACCOUNT", *conf.NRAccount)
 		EtcdSetItem("NEWRELIC_API_KEY", *conf.NRKey)
@@ -80,9 +98,17 @@ func UpdateConfigToEtcd() {
 	}
 }
 
+func SetApplicationId(atype string) {
+	ApplicationId = fmt.Sprintf("%s:%s:%s", *conf.Id, *conf.Name, atype)
+}
+
 func CloseEtcdAgent() {
 	log.Debug("Closing ETCD agent")
 	if Etcd != nil {
 		Etcd.Close()
 	}
+}
+
+func init() {
+	ApplicationId = "UNKNOWN"
 }

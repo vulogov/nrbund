@@ -10,7 +10,7 @@ import (
 func Config() {
 	Init()
 	log.Debug("[ NRBUND ] bund.Config() is reached")
-	InitEtcdAgent()
+	InitEtcdAgent("config")
 	UpdateConfigToEtcd()
 	fmt.Println(EtcdGetItems())
 }

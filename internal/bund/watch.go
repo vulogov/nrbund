@@ -9,7 +9,9 @@ import (
 
 func Watch() {
 	Init()
-	log.Debug("[ NRBUND ] bund.Watch() is reached")
-	InitEtcdAgent()
-	fmt.Println(EtcdGetItems())
+	InitEtcdAgent("watch")
+	UpdateLocalConfigFromEtcd()
+	InitNatsAgent()
+	log.Debugf("[ NRBUND ] bund.Watch(%v) is reached", ApplicationId)
+
 }

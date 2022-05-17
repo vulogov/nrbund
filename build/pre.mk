@@ -19,11 +19,11 @@ pre:
 	go get github.com/pieterclaerhout/go-formatter@v1.0.4
 	go get github.com/elliotchance/orderedmap
 	go mod download github.com/stretchr/testify
-	go install github.com/mgutz/ansi@latest
+	go get -u github.com/mgutz/ansi
 	go get -u github.com/common-nighthawk/go-figure@latest
 	go get github.com/pieterclaerhout/go-log
 	go get github.com/tomlazar/table
-	go get github.com/antlr/antlr4/runtime/Go/antlr
+	go get github.com/antlr/antlr4/runtime/Go/antlr@4.7.2
 	go get github.com/google/uuid
 	go get github.com/cstockton/go-conv
 	go get github.com/ganbarodigital/go_glob
@@ -42,7 +42,11 @@ pre:
 	go get -u github.com/guptarohit/asciigraph
 	go get -u golang.org/x/exp/rand
 	go get -u github.com/nakabonne/tstorage
+	go get -u github.com/davecgh/go-spew/spew
 	go get -u go.etcd.io/etcd/client/v3
 	go get -u github.com/vmihailenco/msgpack
+	go get -u github.com/hjson/hjson-go
+	go get github.com/nats-io/nats.go/
+	go get github.com/bamzi/jobrunner
 	go get -u github.com/vulogov/ThreadComputation
 	go get github.com/newrelic/go-agent/v3/newrelic

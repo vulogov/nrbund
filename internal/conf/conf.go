@@ -73,6 +73,7 @@ var (
 
 	Agitator   	= App.Command("agitator", "Run [ NRBUND ] Agitator")
 
+
 	Agent   		= App.Command("agent", "Run [ NRBUND ] Agent")
 
 	Config   		= App.Command("config", "Send configuration to ETCD")
@@ -84,5 +85,7 @@ var (
 	Take   			= App.Command("take", "Take a single scheduled NRBUND script and execute it")
 
 	Watch   		= App.Command("watch", "Watch for NRBUND event on message bus and print them to Stdout")
+
+	Stop    		= App.Command("stop", "Send 'STOP' signal to a NRBUND bus")
 
 )

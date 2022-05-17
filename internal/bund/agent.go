@@ -9,7 +9,7 @@ import (
 
 func Agent() {
 	Init()
-	log.Debug("[ NRBUND ] bund.Agent() is reached")
-	InitEtcdAgent()
+	InitEtcdAgent("agent")
 	fmt.Println(EtcdGetItems())
+	log.Debugf("[ NRBUND ] bund.Agent(%v) is reached", ApplicationId)
 }
