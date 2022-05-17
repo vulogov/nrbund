@@ -42,6 +42,6 @@ pre:
 	go get -u github.com/guptarohit/asciigraph
 	go get -u golang.org/x/exp/rand
 	go get -u github.com/nakabonne/tstorage
+	go get -u go.etcd.io/etcd/client/v3
 	go get -u github.com/vulogov/ThreadComputation
 	go get github.com/newrelic/go-agent/v3/newrelic
-	

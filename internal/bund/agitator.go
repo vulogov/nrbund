@@ -10,6 +10,7 @@ import (
 func Agitator() {
 	Init()
 	log.Debug("[ NRBUND ] bund.Agitator() is reached")
-
+	InitEtcdAgent()
+	UpdateConfigToEtcd()
 	signal.ExitRequest()
 }

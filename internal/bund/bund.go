@@ -18,7 +18,7 @@ func Main() {
 		Run()
 	case conf.Eval.FullCommand():
 		Eval()
-	case conf.Agitiator.FullCommand():
+	case conf.Agitator.FullCommand():
 		Agitator()
 	case conf.Agent.FullCommand():
 		Agent()

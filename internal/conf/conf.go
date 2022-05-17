@@ -44,10 +44,13 @@ var (
 	CDebug  = App.Flag("core-debug", "Enable core debug mode.").Default("false").Bool()
 	Color   = App.Flag("color", "--color : Enable colors on terminal --no-color : Disable colors .").Default("true").Bool()
 	VBanner = App.Flag("banner", "Display [ NRBUND ] banner .").Default("false").Bool()
+	Timeout = App.Flag("timeout", "Timeout for common NRBUND operations").Default("5s").Duration()
 	NRAccount 		= App.Flag("nraccount", "New Relic account.").Envar("NEWRELIC_ACCOUNT").String()
 	NRKey 				= App.Flag("nrkey", "New Relic API key.").Envar("NEWRELIC_API_KEY").String()
 	NRLicenseKey 	= App.Flag("nrlicensekey", "New Relic API key.").Envar("NEWRELIC_LICENSE_KEY").String()
 	NRIngestKey 	= App.Flag("nringestkey", "New Relic License key.").Envar("NEWRELIC_INGEST_KEY").String()
+	Etcd				= App.Flag("etcd", "ETCD endpoint location").Default("127.0.0.1:2379").Strings()
+	Gnats   		= App.Flag("gnats", "GNATS endpoint location").Default("0.0.0.0:4222").String()
 	Args    = App.Flag("args", "String of arguments passed to a script").String()
 
 
@@ -67,7 +70,7 @@ var (
 	Expr 				= Eval.Arg("expression", "[ NRBUND ] expression.").String()
 	ShowEResult = Eval.Flag("result", "Display result of [ NRBUND ] expression evaluation").Default("false").Short('r').Bool()
 
-	Agitiator   = App.Command("agitator", "Run [ NRBUND ] Agitator")
+	Agitator   	= App.Command("agitator", "Run [ NRBUND ] Agitator")
 
 	Agent   		= App.Command("agent", "Run [ NRBUND ] Agent")
 
