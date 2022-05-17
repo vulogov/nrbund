@@ -22,6 +22,16 @@ func Main() {
 		Agitator()
 	case conf.Agent.FullCommand():
 		Agent()
+	case conf.Config.FullCommand():
+		Config()
+	case conf.Submit.FullCommand():
+		Submit()
+	case conf.Take.FullCommand():
+		Take()
+	case conf.Sync.FullCommand():
+		Sync()
+	case conf.Watch.FullCommand():
+		Watch()
 	}
 	Fin()
 }

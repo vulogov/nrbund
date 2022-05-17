@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 	"time"
-
+	"github.com/google/uuid"
 	"gopkg.in/alecthomas/kingpin.v2"
 )
 
@@ -40,6 +40,7 @@ var (
 	seed    = time.Now().UTC().UnixNano()
 	App     = kingpin.New("NRBUND", fmt.Sprintf("[ NRBUND ] Language that is Functional and Stack-based: %v", BVersion))
 	Name   	= App.Flag("name", "Application name.").Required().String()
+	Id      = App.Flag("id", "Application name.").Default(uuid.New().String()).String()
 	Debug   = App.Flag("debug", "Enable debug mode.").Default("false").Bool()
 	CDebug  = App.Flag("core-debug", "Enable core debug mode.").Default("false").Bool()
 	Color   = App.Flag("color", "--color : Enable colors on terminal --no-color : Disable colors .").Default("true").Bool()
@@ -73,5 +74,15 @@ var (
 	Agitator   	= App.Command("agitator", "Run [ NRBUND ] Agitator")
 
 	Agent   		= App.Command("agent", "Run [ NRBUND ] Agent")
+
+	Config   		= App.Command("config", "Send configuration to ETCD")
+
+	Submit   		= App.Command("submit", "Schedule NRBUND script to be executed")
+
+	Sync   			= App.Command("sync", "Send NRBUND SYNC event")
+
+	Take   			= App.Command("take", "Take a single scheduled NRBUND script and execute it")
+
+	Watch   		= App.Command("watch", "Watch for NRBUND event on message bus and print them to Stdout")
 
 )

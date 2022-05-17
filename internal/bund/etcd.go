@@ -76,6 +76,7 @@ func UpdateConfigToEtcd() {
 		EtcdSetItem("NEWRELIC_API_KEY", *conf.NRKey)
 		EtcdSetItem("NEWRELIC_INGEST_KEY", *conf.NRIngestKey)
 		EtcdSetItem("NEWRELIC_LICENSE_KEY", *conf.NRLicenseKey)
+		EtcdSetItem("ID", *conf.Id)
 	}
 }
 

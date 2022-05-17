@@ -7,9 +7,10 @@ import (
 
 
 
-func Agent() {
+func Config() {
 	Init()
-	log.Debug("[ NRBUND ] bund.Agent() is reached")
+	log.Debug("[ NRBUND ] bund.Config() is reached")
 	InitEtcdAgent()
+	UpdateConfigToEtcd()
 	fmt.Println(EtcdGetItems())
 }

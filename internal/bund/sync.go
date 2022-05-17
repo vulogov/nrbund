@@ -7,9 +7,9 @@ import (
 
 
 
-func Agent() {
+func Sync() {
 	Init()
-	log.Debug("[ NRBUND ] bund.Agent() is reached")
+	log.Debug("[ NRBUND ] bund.Sync() is reached")
 	InitEtcdAgent()
 	fmt.Println(EtcdGetItems())
 }

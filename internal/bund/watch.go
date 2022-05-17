@@ -7,9 +7,9 @@ import (
 
 
 
-func Agent() {
+func Watch() {
 	Init()
-	log.Debug("[ NRBUND ] bund.Agent() is reached")
+	log.Debug("[ NRBUND ] bund.Watch() is reached")
 	InitEtcdAgent()
 	fmt.Println(EtcdGetItems())
 }

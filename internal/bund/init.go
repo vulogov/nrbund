@@ -25,6 +25,8 @@ func Init() {
 		log.Debugf("ARGV: %v", Argv)
 		conf.Argv = Argv
 	}
+	log.Debugf("[ NRBUND ] Id: %v", *conf.Id)
+	log.Debugf("[ NRBUND ] Name: %v", *conf.Name)
 	stdlib.StoreArgs()
 	CheckNewRelic()
 	InitNewRelicAgent()

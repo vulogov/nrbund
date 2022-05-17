@@ -7,9 +7,9 @@ import (
 
 
 
-func Agent() {
+func Submit() {
 	Init()
-	log.Debug("[ NRBUND ] bund.Agent() is reached")
+	log.Debug("[ NRBUND ] bund.Submit() is reached")
 	InitEtcdAgent()
 	fmt.Println(EtcdGetItems())
 }
