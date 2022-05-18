@@ -74,6 +74,7 @@ func Agent() {
 	InitEtcdAgent("agent")
 	UpdateLocalConfigFromEtcd()
 	InitNatsAgent()
+	InitNewRelicAgent()
 	log.Debugf("[ NRBUND ] bund.Agent(%v) is reached", ApplicationId)
 	NatsRecv(NRBundAgent)
 	Loop()

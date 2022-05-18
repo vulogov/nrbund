@@ -20,6 +20,7 @@ func Stop() {
 	InitEtcdAgent("stop")
 	UpdateLocalConfigFromEtcd()
 	InitNatsAgent()
+	InitNewRelicAgent()
 	log.Debugf("[ NRBUND ] bund.Stop(%v) is reached", ApplicationId)
 	SendStop()
 	for ! signal.ExitRequested() {

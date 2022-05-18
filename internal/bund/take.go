@@ -24,6 +24,7 @@ func Take() {
 	InitEtcdAgent("take")
 	UpdateLocalConfigFromEtcd()
 	InitNatsAgent()
+	InitNewRelicAgent()
 	log.Debugf("[ NRBUND ] bund.Take(%v) is reached", ApplicationId)
 	NatsRecv(NRBundExecuteScript)
 	Loop()

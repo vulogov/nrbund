@@ -31,5 +31,4 @@ func Init() {
 	log.Debugf("[ NRBUND ] Job runner started")
 	stdlib.StoreArgs()
 	CheckNewRelic()
-	InitNewRelicAgent()
 }

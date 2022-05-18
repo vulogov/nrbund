@@ -28,6 +28,7 @@ func Sync() {
 	InitEtcdAgent("sync")
 	UpdateLocalConfigFromEtcd()
 	InitNatsAgent()
+	InitNewRelicAgent()
 	log.Debugf("[ NRBUND ] bund.Sync(%v) is reached", ApplicationId)
 	jobrunner.Schedule("@every 5s", NATSSync{})
 	for ! signal.ExitRequested() {

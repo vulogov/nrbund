@@ -13,7 +13,7 @@ var NRapp newrelic.Application
 
 func InitNewRelicAgent() {
 	NRapp, err := newrelic.NewApplication(
-		newrelic.ConfigAppName(*conf.Name),
+		newrelic.ConfigAppName(ApplicationId),
 		newrelic.ConfigLicense(*conf.NRLicenseKey),
 		// newrelic.ConfigDebugLogger(os.Stdout),
 	)
@@ -25,7 +25,7 @@ func InitNewRelicAgent() {
 		log.Errorf("[ NEWRELIC ] %v", err)
 		os.Exit(10)
 	}
-	log.Debug("NR application has been initialized and connection established")
+	log.Debugf("NR application %v has been initialized and connection established", ApplicationId)
 	NRapp.RecordCustomEvent("BundApplication", map[string]interface{}{
 		"msg": fmt.Sprintf("Application %s started", *conf.Name),
 	})

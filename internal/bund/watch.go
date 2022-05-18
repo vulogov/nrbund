@@ -21,6 +21,7 @@ func Watch() {
 	InitEtcdAgent("watch")
 	UpdateLocalConfigFromEtcd()
 	InitNatsAgent()
+	InitNewRelicAgent()
 	log.Debugf("[ NRBUND ] bund.Watch(%v) is reached", ApplicationId)
 	NatsRecv(WatchDisplay)
 	Loop()
