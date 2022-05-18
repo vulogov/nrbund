@@ -1,15 +1,30 @@
 package bund
 
 import (
-	"fmt"
+	"github.com/vulogov/nrbund/internal/signal"
+	"github.com/nats-io/nats.go"
 	"github.com/pieterclaerhout/go-log"
 )
 
-
+func NRBundExecuteScript(m *nats.Msg) {
+	msg := UnMarshal(m.Data)
+	if msg == nil {
+		log.Error("Invalid packet received")
+	}
+	IfSTOP(msg)
+	if msg.PktKey == "Agitator" && len(msg.Value) > 0 {
+		BundEvalExpression(string(msg.Value))
+	}
+	signal.ExitRequest()
+	DoContinue = false
+}
 
 func Take() {
 	Init()
-	log.Debug("[ NRBUND ] bund.Take() is reached")
 	InitEtcdAgent("take")
-	fmt.Println(EtcdGetItems())
+	UpdateLocalConfigFromEtcd()
+	InitNatsAgent()
+	log.Debugf("[ NRBUND ] bund.Take(%v) is reached", ApplicationId)
+	NatsRecv(NRBundExecuteScript)
+	Loop()
 }

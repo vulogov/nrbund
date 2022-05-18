@@ -1,15 +1,28 @@
 package bund
 
 import (
-	"fmt"
+	"time"
+	"github.com/vulogov/nrbund/internal/signal"
 	"github.com/pieterclaerhout/go-log"
 )
 
-
+func SendStop() {
+	data, err := MakeStop("stop")
+	if err != nil {
+		log.Errorf("[ NRBUND ] STOP: %v", err)
+	}
+	NatsSend(data)
+	signal.ExitRequest()
+}
 
 func Stop() {
 	Init()
-	log.Debug("[ NRBUND ] bund.Stop() is reached")
 	InitEtcdAgent("stop")
-	fmt.Println(EtcdGetItems())
+	UpdateLocalConfigFromEtcd()
+	InitNatsAgent()
+	log.Debugf("[ NRBUND ] bund.Stop(%v) is reached", ApplicationId)
+	SendStop()
+	for ! signal.ExitRequested() {
+		time.Sleep(1 * time.Second)
+	}
 }

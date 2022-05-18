@@ -7,6 +7,7 @@ require (
 	github.com/brianvoe/gofakeit/v6 v6.16.0
 	github.com/common-nighthawk/go-figure v0.0.0-20210622060536-734e95fb86be
 	github.com/cosiner/argv v0.1.0
+	github.com/davecgh/go-spew v1.1.1
 	github.com/elastic/go-sysinfo v1.7.1
 	github.com/gammazero/deque v0.1.1
 	github.com/google/uuid v1.3.0
@@ -49,7 +50,6 @@ require (
 	github.com/coreos/go-semver v0.3.0 // indirect
 	github.com/coreos/go-systemd/v22 v22.3.2 // indirect
 	github.com/cstockton/go-conv v1.0.0 // indirect
-	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/deckarep/golang-set v1.8.0 // indirect
 	github.com/elastic/go-windows v1.0.1 // indirect
 	github.com/fatih/color v1.13.0 // indirect

@@ -3,7 +3,7 @@ package bund
 import (
 	"time"
 	"github.com/pieterclaerhout/go-log"
-
+	"github.com/vulogov/nrbund/internal/signal"
 	"github.com/vulogov/nrbund/internal/banner"
 )
 
@@ -16,4 +16,5 @@ func Fin() {
 	NRapp.Shutdown(60 * time.Second)
 	log.Debug("NR Application is down")
 	log.Infof("[ NRBUND ] %s is down", ApplicationId)
+	signal.ExitRequest()
 }

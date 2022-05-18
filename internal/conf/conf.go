@@ -79,6 +79,7 @@ var (
 	Config   		= App.Command("config", "Send configuration to ETCD")
 
 	Submit   		= App.Command("submit", "Schedule NRBUND script to be executed")
+	SScript 		= Submit.Arg("script", "BUND URL to the script, submitted to NRBUND for execution").Default("-").String()
 
 	Sync   			= App.Command("sync", "Send NRBUND SYNC event")
 

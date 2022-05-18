@@ -5,6 +5,7 @@ import (
 	"github.com/vmihailenco/msgpack"
 	"github.com/pieterclaerhout/go-log"
 	"github.com/vulogov/nrbund/internal/conf"
+	"github.com/vulogov/nrbund/internal/signal"
 )
 
 type NRBundPacket struct {
@@ -14,11 +15,11 @@ type NRBundPacket struct {
 	OrgRole   string
 	PktClass  string
 	PktKey    string
-	Args      []string
+	Args      []interface{}
 	Value     []byte
 }
 
-func Marshal(orole string, pktclass string, pktkey string, args []string, value []byte) ([]byte, error) {
+func Marshal(orole string, pktclass string, pktkey string, args []interface{}, value []byte) ([]byte, error) {
 	res := new(NRBundPacket)
 	res.PktId = uuid.New().String()
 	res.Id 				= *conf.Id
@@ -41,6 +42,17 @@ func UnMarshal(data []byte) *NRBundPacket {
 	return res
 }
 
+func IfSTOP(msg *NRBundPacket) bool {
+	if msg.PktClass == "SYS" && msg.PktKey == "STOP" {
+		log.Debugf("[ NRBUND ] STOP(%v) packet received", msg.PktId)
+		SendStop()
+		signal.ExitRequest()
+		DoContinue = false
+		return true
+	}
+	return false
+}
+
 func MakeSync(orole string) ([]byte, error) {
 	return Marshal(orole, "SYS", "SYNC", nil, nil)
 }
@@ -49,6 +61,6 @@ func MakeStop(orole string) ([]byte, error) {
 	return Marshal(orole, "SYS", "STOP", nil, nil)
 }
 
-func MakeScript(orole string, script []byte, args []string) ([]byte, error) {
+func MakeScript(orole string, script []byte, args []interface{}) ([]byte, error) {
 	return Marshal(orole, "SYS", "Agitator", args, script)
 }

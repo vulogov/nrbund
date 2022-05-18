@@ -32,6 +32,8 @@ func Main() {
 		Sync()
 	case conf.Watch.FullCommand():
 		Watch()
+	case conf.Stop.FullCommand():
+		Stop()
 	}
 	Fin()
 }

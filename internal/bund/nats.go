@@ -34,11 +34,13 @@ func InitNatsAgent() {
 }
 
 func NatsSend(data []byte) {
-	Nats.Publish(QueueName, data)
+	if DoContinue {
+		Nats.Publish(QueueName, data)
+	}
 }
 
 func NatsRecv(fun nats.MsgHandler) {
-	Nats.QueueSubscribe(ApplicationId, *conf.Name, fun)
+	Nats.QueueSubscribe(QueueName, *conf.Id, fun)
 }
 
 func CloseNatsAgent() {
