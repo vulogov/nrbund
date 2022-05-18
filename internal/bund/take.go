@@ -13,7 +13,7 @@ func NRBundExecuteScript(m *nats.Msg) {
 	}
 	IfSTOP(msg)
 	if msg.PktKey == "Agitator" && len(msg.Value) > 0 {
-		BundEvalExpression(string(msg.Value))
+		BundGlobalEvalExpression(string(msg.Value))
 	}
 	signal.ExitRequest()
 	DoContinue = false

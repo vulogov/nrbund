@@ -52,6 +52,7 @@ var (
 	NRIngestKey 	= App.Flag("nringestkey", "New Relic License key.").Envar("NEWRELIC_INGEST_KEY").String()
 	Etcd				= App.Flag("etcd", "ETCD endpoint location").Default("127.0.0.1:2379").Strings()
 	Gnats   		= App.Flag("gnats", "GNATS endpoint location").Default("0.0.0.0:4222").String()
+	ShowResult 	= App.Flag("displayresult", "Display result of [ NRBUND ] expression evaluation").Default("false").Bool()
 	Args    = App.Flag("args", "String of arguments passed to a script").String()
 
 
