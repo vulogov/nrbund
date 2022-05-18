@@ -11,7 +11,6 @@ func NRBundExecuteScript(m *nats.Msg) {
 	if msg == nil {
 		log.Error("Invalid packet received")
 	}
-	IfSTOP(msg)
 	if msg.PktKey == "Agitator" && len(msg.Value) > 0 {
 		BundGlobalEvalExpression(string(msg.Value))
 	}

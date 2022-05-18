@@ -11,7 +11,7 @@ func SendStop() {
 	if err != nil {
 		log.Errorf("[ NRBUND ] STOP: %v", err)
 	}
-	NatsSend(data)
+	NatsSendSys(data)
 	signal.ExitRequest()
 }
 

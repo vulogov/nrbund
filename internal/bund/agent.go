@@ -59,11 +59,14 @@ func BundGlobalEvalExpression(code string) {
 
 
 func NRBundAgent(m *nats.Msg) {
+	if ! HadSync {
+		log.Warn("Request received but agent not in SYNC state. Request ignored.")
+		return
+	}
 	msg := UnMarshal(m.Data)
 	if msg == nil {
 		log.Error("Invalid packet received")
 	}
-	IfSTOP(msg)
 	if msg.PktKey == "Agitator" && len(msg.Value) > 0 {
 		BundGlobalEvalExpression(string(msg.Value))
 	}

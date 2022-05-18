@@ -20,7 +20,7 @@ func SendSync() {
 	if err != nil {
 		log.Errorf("[ NRBUND ] SYNC: %v", err)
 	}
-	NatsSend(data)
+	NatsSendSys(data)
 }
 
 func Sync() {

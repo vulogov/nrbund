@@ -44,10 +44,15 @@ func UnMarshal(data []byte) *NRBundPacket {
 
 func IfSTOP(msg *NRBundPacket) bool {
 	if msg.PktClass == "SYS" && msg.PktKey == "STOP" {
-		log.Debugf("[ NRBUND ] STOP(%v) packet received", msg.PktId)
-		SendStop()
 		signal.ExitRequest()
 		DoContinue = false
+		return true
+	}
+	return false
+}
+
+func IfSYNC(msg *NRBundPacket) bool {
+	if msg.PktClass == "SYS" && msg.PktKey == "SYNC" {
 		return true
 	}
 	return false

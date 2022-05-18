@@ -13,7 +13,6 @@ func WatchDisplay(m *nats.Msg) {
 	}
 	log.Debugf("[ PACKET ] %v", msg.PktId)
 	spew.Dump(msg)
-	IfSTOP(msg)
 }
 
 func Watch() {

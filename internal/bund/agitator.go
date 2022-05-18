@@ -14,7 +14,12 @@ type TheScript struct {
 }
 
 func (s TheScript) Run() {
+	if ! HadSync {
+		log.Warn("Request to submit job received but agitator not in SYNC state. Request ignored.")
+		return
+	}
 	txn := NRapp.StartTransaction(fmt.Sprintf("[%v]%v", s.Name, s.Uri))
+	defer txn.End()
 	log.Debugf("[ NRBUND ] sending %s", s.Name)
 	segment := txn.StartSegment(fmt.Sprintf("[%v] Read %v", s.Name, s.Uri))
 	script, err := tc.ReadFile(s.Uri)
@@ -22,18 +27,15 @@ func (s TheScript) Run() {
 	if err != nil {
 		log.Errorf("[ NRBUND ] %v", err)
 		txn.NoticeError(err)
-		txn.End()
 		return
 	}
 	if len(script) == 0 {
 		log.Errorf("[ NRBUND ] script can not be a zero length")
 		txn.NoticeError(err)
-		txn.End()
 		return
 	}
 	pkt, err := MakeScript("agitator", []byte(script), nil)
 	NatsSend(pkt)
-	txn.End()
 }
 
 
@@ -76,5 +78,6 @@ func Agitator() {
 	InitNatsAgent()
 	InitNewRelicAgent()
 	AgitatorScheduleConfig()
+	jobrunner.Schedule("@every 5s", NATSSync{})
 	Loop()
 }

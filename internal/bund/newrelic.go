@@ -15,7 +15,7 @@ func InitNewRelicAgent() {
 	NRapp, err := newrelic.NewApplication(
 		newrelic.ConfigAppName(ApplicationId),
 		newrelic.ConfigLicense(*conf.NRLicenseKey),
-		// newrelic.ConfigDebugLogger(os.Stdout),
+		// newrelic.ConfigDebugLogger(Out),
 	)
 	if err != nil {
 		log.Errorf("[ NEWRELIC ] %v", err)
