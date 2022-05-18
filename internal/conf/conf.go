@@ -73,7 +73,7 @@ var (
 	ShowEResult = Eval.Flag("result", "Display result of [ NRBUND ] expression evaluation").Default("false").Short('r').Bool()
 
 	Agitator   	= App.Command("agitator", "Run [ NRBUND ] Agitator")
-
+	AConf 			= Agitator.Flag("conf", "Configuration file for Agitator scheduler.").Required().Strings()
 
 	Agent   		= App.Command("agent", "Run [ NRBUND ] Agent")
 

@@ -12,6 +12,7 @@ require (
 	github.com/gammazero/deque v0.1.1
 	github.com/google/uuid v1.3.0
 	github.com/guptarohit/asciigraph v0.5.5
+	github.com/hjson/hjson-go v3.1.0+incompatible
 	github.com/lrita/cmap v0.0.0-20200818170753-e987cd3dfa73
 	github.com/mgutz/ansi v0.0.0-20200706080929-d51e80ef957d
 	github.com/nats-io/nats.go v1.15.0

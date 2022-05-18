@@ -1,0 +1,9 @@
+{
+  jobs: [
+    {
+      name: "Hello World"
+      schedule: "@every 5s"
+      uri: "./examples/helloworld.bund"
+    }
+  ]
+}
